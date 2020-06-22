@@ -87,6 +87,7 @@ header("Content-Type: text/html;charset=utf-8");
         <label class="hamburger-top-menu__button" for="hamburger-top-menu">
             <span class="hamburger-top-menu__line"></span>
         </label>
+        <div class="hamburger-top-menu__overlay"></div>
 
         <ul class="top-menu__items flex">
             <li class="top-menu__item"><a class="top-menu__link" href="#">О компании</a></li>
@@ -245,5 +246,18 @@ header("Content-Type: text/html;charset=utf-8");
         </div>
     </div>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<? /* так же можно вынести отдельно ./js/hamburger-menu.js*/ ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".hamburger-top-menu__button").bind('click', function () {
+            $('body').toggleClass("hamburger-top-menu__body-active");
+        });
+        $(".hamburger-top-menu__overlay").bind('click', function () {
+            $('.hamburger-top-menu__button').trigger('click');
+        });
+    })
+</script>
+<? /* ! ./js/hamburger-menu.js*/ ?>
 </body>
 </html>

@@ -494,6 +494,14 @@ h1 {
         flex-wrap: wrap;
     }
 
+    .main-menu__item {
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-preferred-size: 33.33333%;
+        flex-basis: 33.33333%;
+    }
+
     .main-menu__link {
         border-bottom: 1px solid #dfdfdf;
     }
@@ -540,6 +548,11 @@ h1 {
     .top-menu__item {
         margin-bottom: 5px;
     }
+
+    .main-menu__item {
+        -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -560,8 +573,12 @@ h1 {
         margin-top: 10px;
     }
 
-    .content, .pagenation {
+    .pagenation {
         padding-left: 0;
+    }
+
+    .content {
+        padding-left: 10px;
     }
 
     .pagenation__items {
@@ -623,9 +640,8 @@ h1 {
         width: 100%;
         height: 2px;
         background-color: #616161;
-
         transition-property: transform, top;
-        transition-duration: 1s;
+        transition-duration: 0.2s;
         transition-timing-function: ease-out;
     }
 
@@ -637,6 +653,10 @@ h1 {
     .hamburger-top-menu__line::after {
         content: '';
         top: 8px;
+    }
+
+    .top-menu + .line {
+        display: none
     }
 
     .top-menu__items {
@@ -653,12 +673,17 @@ h1 {
         background-color: #ECEFF1;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
         z-index: 1;
+        padding-bottom: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: auto;
     }
 
     .top-menu__item {
         flex: 1 1 100%;
         justify-content: center;
         align-items: center;
+        margin-right: 0;
     }
 
     .top-menu__link {
@@ -689,6 +714,23 @@ h1 {
     #hamburger-top-menu:checked ~ .top-menu__items {
         display: flex;
         left: 0;
+    }
+
+    #hamburger-top-menu:checked ~ .hamburger-top-menu__overlay {
+        position: fixed;
+        z-index: 1;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        -moz-opacity: 0.4;
+        filter: alpha(opacity=40);
+        opacity: 0.4;
+    }
+
+    .hamburger-top-menu__body-active {
+        overflow: hidden;
     }
 
     /* /hamburger-menu */
